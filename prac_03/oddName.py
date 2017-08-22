@@ -1,11 +1,22 @@
 
 """Peter"""
+def main():
+    name = get_name()
+    step = get_step()
+    print(name[1::step])
 
-valid_name = False
-name = input("What is your name? ")
-while not valid_name:
-    if len(name) > 0:
-        valid_name = True
-    else:
+
+def get_name():
+    name = input("What is your name? ")
+    while name == "":
+        print("Invalid name!")
         name = input("What is your name?")
-print(name[1::2])
+    return name
+
+
+def get_step():
+    step = int(input("Choose step size: "))
+    return step
+
+
+main()
