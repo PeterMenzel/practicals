@@ -4,7 +4,7 @@
 def main():
     name = get_name()
     step = get_step()
-    print(name[1::step])
+    print(name[::step])
 
 
 def get_name():
