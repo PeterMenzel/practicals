@@ -9,6 +9,7 @@ def main():
     number_of_quick_picks = int(input("How many quick picks would you like to generate? "))
 
     while number_of_quick_picks < 0:
+        print("invalid number")
         number_of_quick_picks = int(input("How many quick picks would you like to generate? "))
 
     for i in range(number_of_quick_picks):
