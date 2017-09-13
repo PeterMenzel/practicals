@@ -3,10 +3,7 @@ words = text.split()
 unique_words = {}
 for word in words:
     frequency = unique_words.get(word, 0)
-    if frequency is None:
-        unique_words[word] = 1
-    else:
-       unique_words[word] = frequency + 1
+    unique_words[word] = frequency + 1
 
 words = list(unique_words.keys())
 words.sort()
