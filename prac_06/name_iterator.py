@@ -15,7 +15,7 @@ class NameIterator(App):
         super().__init__(**kwargs)
         # basic data example - dictionary of names: phone numbers
         # self.phonebook = {"Bob Brown": "0414144411", "Cat Cyan": "0441411211", "Oren Ochre": "0432123456"}
-        self.names = {"Bob Brown", "Cat Cyan", "Oren Ochre"}
+        self.names = ["Bob Brown", "Cat Cyan", "Oren Ochre"]
 
     def build(self):
         """
