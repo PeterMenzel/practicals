@@ -20,7 +20,7 @@ def main():
     guitars.sort()
     print("These are my guitars:")
     for i, guitar in enumerate(guitars):
-        if guitars[i].is_vintage():
+        if guitar.is_vintage():
             vintage_string = "(vintage)"
         else:
             vintage_string = ""
