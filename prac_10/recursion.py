@@ -22,4 +22,15 @@ def do_something(n):
 
 do_something(4)
 
-# TODO: 5. fix do_something() so that it works the way it probably should :)
+
+def block_counter(rows):
+    if rows <= 0:
+        return 0
+    return rows + block_counter(rows - 1)
+
+
+def build_pyramid():
+    chosen_rows = int(input("How many rows: "))
+    print("For {} rows, you need {} blocks".format(chosen_rows, block_counter(chosen_rows)))
+
+build_pyramid()

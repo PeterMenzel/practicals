@@ -82,10 +82,14 @@ def get_directory(filename, extension_dictionary):
     extension = filename.split('.')[1]
     if extension not in extension_dictionary.values():
         new_directory = input("What category would you like to sort {} files into? ".format(extension))
-    # if not new_directory in extension_dictionary:
-        if not os.path.isdir(new_directory):
+        if new_directory not in extension_dictionary.keys():
+            extension_dictionary[new_directory] = [extension]
             os.mkdir(new_directory)
-        extension_dictionary[new_directory] = extension
+        # if not new_directory in extension_dictionary:
+        else:
+            extension_dictionary[new_directory].append(extension)
+    # if not os.path.isdir(new_directory):
+    #         os.mkdir(new_directory)
     # shutil.move(filename, new_directory)
     print(extension_dictionary)
 
