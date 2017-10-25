@@ -38,18 +38,56 @@ def main():
             #     print("In", dir_name)
             #     print("\tcontains subdirectories:", subdir_list)
             #     print("\tand files:", file_list)
+    os.chdir('..')
+    os.chdir('..')
+    os.chdir('FilesToSort')
+    print(os.listdir('.'))
+    # for filename in os.listdir('.'):
+    #     # ignore directories, just process files
+    #     if not os.path.isdir(filename):
+    #         create_directory(filename)
+    extension_dictionary = {}
+    for filename in os.listdir('.'):
+        # ignore directories, just process files
+        if not os.path.isdir(filename):
+            get_directory(filename, extension_dictionary)
 
 
 def get_fixed_filename(filename):
     """Return a 'fixed' version of filename."""
     # First, replace the spaces and .TXT (the easy part)
-    filename = filename.replace(" ", "_").replace(".TXT", ".txt")
+    # filename = filename.replace(" ", "_").replace(".TXT", ".txt")
 
     # new_name = ""
     # TODO: step-by-step, consider the problem cases and solve them
     new_name = filename.replace(" ", "_").replace(".TXT", ".txt")
-
+    name = []
+    i = 0
+    for char in new_name:
+        name.append(char)
+        if name[i] == "_":
+            char = new_name[i + 1].upper()
+        i += 1
     return new_name
+
+
+def create_directory(filename):
+    extension = filename.split('.')[1]
+    if not os.path.isdir(extension):
+        os.mkdir(extension)
+    shutil.move(filename, extension)
+
+
+def get_directory(filename, extension_dictionary):
+    extension = filename.split('.')[1]
+    if extension not in extension_dictionary.values():
+        new_directory = input("What category would you like to sort {} files into? ".format(extension))
+    # if not new_directory in extension_dictionary:
+        if not os.path.isdir(new_directory):
+            os.mkdir(new_directory)
+        extension_dictionary[new_directory] = extension
+    # shutil.move(filename, new_directory)
+    print(extension_dictionary)
 
 
 main()
