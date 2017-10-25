@@ -22,7 +22,7 @@ def is_long_word(word, length=5):
     >>> is_long_word("Python", 6)
     True
     """
-    return len(word) > length
+    return len(word) >= length
 
 
 def run_tests():
@@ -39,26 +39,28 @@ def run_tests():
     test_car = Car()
     assert test_car.odometer == 0, "Car does not set odometer correctly"
 
-    # TODO: 2. write assert statements to show if Car sets the fuel correctly
     # Note that Car's __init__ function sets the fuel in one of two ways:
     # using the value passed in or the default
     # You should test both of these
     test_car = Car(fuel=10)
+    assert test_car.fuel == 10
+
+
+def phrase_to_sentence(phrase):
+    """
+    >>> phrase_to_sentence("Hello")
+    'Hello.'
+    >>> phrase_to_sentence("It is an ex parrot.")
+    'It is an ex parrot.'
+    >>> phrase_to_sentence("you what mate")
+    'You what mate.'
+    """
+    sentence = phrase.capitalize()
+    if sentence[-1] != '.':
+        sentence += '.'
+    return sentence
 
 
 run_tests()
 
-# TODO: 3. Uncomment the following line and run the doctests
-# doctest.testmod()
-
-# TODO: 4. Fix the failing is_long_word function
-# (don't change the tests, but the function!)
-
-# TODO: 5. Write and test a function to format a phrase as a sentence,
-# starting with a capital and ending with a single full stop.
-# Important: start with a function header and just use pass as the body
-# then add doctests so that:
-# 'hello' -> ''Hello.'
-# 'It is an ex parrot.' -> 'It is an ex parrot.'
-# and one more you decide (that's valid!)
-# then write the body of the function so that the tests pass
+doctest.testmod()
